@@ -22,34 +22,34 @@ fs.writeFile("persona.json", JSON.stringify(persona), (err) => {
     if (err) {
       throw err;
     }
+  });
+});
 
-    rl.question("Introduce tu nombre: ", (answer) => {
-      console.log(`Hello, ${answer}!`);
-      persona.name = answer;
+//Segunda persona json
 
-      rl.question("Introduce tu apellido: ", (answer) => {
-        console.log(`Hello, ${answer}!`);
-        persona.surname = answer;
+let persona2 = {};
 
-        rl.question("Introduce tu edad: ", (answer) => {
-          console.log(`Hello, ${answer}!`);
-          persona.age = answer;
+rl.question("Introduce tu nombre: ", (answer) => {
+  persona2.name = answer;
 
-          fs.writeFile("persona.json", JSON.stringify(persona), (err) => {
-            if (err) {
-              throw err;
-            }
-            console.log("Archivo actualizado");
-            rl.close();
+  rl.question("Introduce tu apellido: ", (answer) => {
+    persona2.surname = answer;
 
-            fs.readFile("persona.json", "utf8", (err, data) => {
-              if (err) {
-                throw err;
-              }
-              console.log(data);
-            });
-          });
+    rl.question("Introduce tu edad: ", (answer) => {
+      persona2.age = answer;
+
+      fs.writeFile("persona2.json", JSON.stringify(persona2), (err) => {
+        if (err) {
+          throw err;
+        }
+        console.log("Archivo actualizado");
+        fs.readFile("persona2.json", "utf8", (err, data) => {
+          if (err) {
+            throw err;
+          }
+          console.log(data);
         });
+        rl.close();
       });
     });
   });
