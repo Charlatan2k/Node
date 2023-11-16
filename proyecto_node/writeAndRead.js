@@ -10,10 +10,11 @@ function writeAndRead(path, obj) {
       if (err) {
         throw err;
       }
+      console.log(data);
     });
   });
 }
 
-// writeAndRead("fichero.json", { calle: "Teruel", numero: 9 });
+writeAndRead("fichero.json", { calle: "Teruel", numero: 9 });
 
 module.exports = writeAndRead;
