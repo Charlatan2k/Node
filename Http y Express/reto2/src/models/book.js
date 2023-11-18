@@ -9,3 +9,5 @@ class Book {
     this.photo = photo;
   }
 }
+
+module.exports = Book;
