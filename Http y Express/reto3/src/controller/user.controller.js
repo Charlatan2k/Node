@@ -29,7 +29,7 @@ function getBooks(req, res) {
 }
 
 function getBookById(req, res) {
-  const id = req.params.id;
+  const id = req.body.id;
   const book = books.find((book) => book.id === id);
 
   if (book) {
@@ -61,7 +61,7 @@ function addBook(req, res) {
 }
 
 function deleteBook(req, res) {
-  const id = Number(req.params.id);
+  const id = Number(req.body.id);
   const bookIndex = books.findIndex((book) => book.id_book === id);
   if (bookIndex === -1) {
     res.status(404).json({ error: true, message: "Libro no existe" });
@@ -73,17 +73,16 @@ function deleteBook(req, res) {
 }
 
 function modifyBook(req, res) {
-  const id = Number(req.params.id);
+  const id = Number(req.body.id);
   const updatedBook = req.body;
 
-  // Find the book and update its properties
   const book = books.find((book) => book.id_book === id);
   if (book) {
     book.title = updatedBook.title;
     book.type = updatedBook.type;
     book.author = updatedBook.author;
     book.price = updatedBook.price;
-    book.photo = updatedBook.photo; // Update the photo URL
+    book.photo = updatedBook.photo;
 
     res.send(book);
   } else {
