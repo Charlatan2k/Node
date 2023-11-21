@@ -10,7 +10,7 @@ router.get("/books/:id", usersCtrl.getBookById);
 
 router.post("/books", usersCtrl.addBook);
 
-router.put("/books", usersCtrl.modifyBook);
+router.put("/books/:id", usersCtrl.modifyBook);
 
 router.delete("/books/:id", usersCtrl.deleteBook);
 

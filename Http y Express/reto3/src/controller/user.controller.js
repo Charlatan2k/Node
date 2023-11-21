@@ -73,18 +73,21 @@ function deleteBook(req, res) {
 }
 
 function modifyBook(req, res) {
-  const id = Number(req.query.id);
+  const id = Number(req.params.id);
+  const updatedBook = req.body;
+
+  // Find the book and update its properties
   const book = books.find((book) => book.id_book === id);
-  if (!book) {
-    res.json({ error: true, codigo: 200, message: "Libro no existe" });
+  if (book) {
+    book.title = updatedBook.title;
+    book.type = updatedBook.type;
+    book.author = updatedBook.author;
+    book.price = updatedBook.price;
+    book.photo = updatedBook.photo; // Update the photo URL
+
+    res.send(book);
   } else {
-    const { title, genre, author, price, url } = req.body;
-    book.title = title;
-    book.genre = genre;
-    book.author = author;
-    book.price = price;
-    book.url = url;
-    res.json({ message: "Libro modificado", data: book });
+    res.status(404).send("Book not found");
   }
 }
 
