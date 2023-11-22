@@ -18,8 +18,10 @@ async function getPokemon(nombre) {
       .getElementById("pokemonImage")
       .setAttribute("src", response.sprites.front_default);
     document.getElementById("pokemonNameDetail").textContent = response.name;
-    document.getElementById("pokemonHeight").textContent = response.height;
-    document.getElementById("pokemonWeight").textContent = response.weight;
+    document.getElementById("pokemonHeight").textContent =
+      response.height + "inch";
+    document.getElementById("pokemonWeight").textContent =
+      response.weight + "kg";
 
     // Haciendo un join de los nombres de las abilidades ya que es un array
     const abilities = response.abilities
