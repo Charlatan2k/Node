@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.cdnfonts.com/css/pokemon-solid"
+      rel="stylesheet"
+    />
+
+    <script src="pokemon.js"></script>
+    <title>Pokemons</title>
+  </head>
+  <body>
+    <div class="container-pr">
+      <div class="pok-table">
+        <h1>Elige tu Pokemon</h1>
+        <div id="errorMessage"></div>
+        <table>
+          <tr>
+            <td class="input-imagen">
+              <img id="pokemonImage" src="" alt="" />
+
+              <input
+                type="text"
+                id="pokemonName"
+                placeholder="Nombre de pokemon"
+              />
+              <button
+                onclick="getPokemon(document.getElementById('pokemonName').value.toLowerCase())"
+              >
+                Get Details
+              </button>
+            </td>
+          </tr>
+        </table>
+        <table id="pokemonDetails" style="display: none">
+          <tr>
+            <th>Name</th>
+            <td id="pokemonNameDetail"></td>
+          </tr>
+          <tr>
+            <th>Height</th>
+            <td id="pokemonHeight"></td>
+          </tr>
+          <tr>
+            <th>Weight</th>
+            <td id="pokemonWeight"></td>
+          </tr>
+          <tr>
+            <th>Abilities</th>
+            <td id="pokemonAbilities"></td>
+          </tr>
+        </table>
+
+        <script>
+          function fetchPokemonDetails() {}
+        </script>
+      </div>
+    </div>
+  </body>
+</html>
