@@ -14,10 +14,16 @@ async function getPokemon(nombre) {
     const response = await data.json();
 
     // Ajustar cada uno de los datos a su respectivo elemento
+
+    // Convertir primera letra del nombre a mayus
+    let name = response.name;
+    name = name.charAt(0).toUpperCase() + name.slice(1);
+
     document
       .getElementById("pokemonImage")
       .setAttribute("src", response.sprites.front_default);
-    document.getElementById("pokemonNameDetail").textContent = response.name;
+
+    document.getElementById("pokemonNameDetail").textContent = name;
     document.getElementById("pokemonHeight").textContent =
       response.height + "inch";
     document.getElementById("pokemonWeight").textContent =
@@ -36,17 +42,18 @@ async function getPokemon(nombre) {
     document.getElementById("errorMessage").style.visibility = "hidden";
   } catch (error) {
     if (error) {
-      // Show the error message
+      // Mostral el mensaje de error
       document.getElementById("errorMessage").textContent = "No encontrado";
       document.getElementById("errorMessage").style.display = "flex";
       document.getElementById("errorMessage").style.visibility = "visible";
     } else {
-      // Clear the error message
+      // Hacer no visible cuando se vuelva a encontrar un pokemon correctament
       document.getElementById("errorMessage").textContent = "";
       document.getElementById("errorMessage").style.display = "none";
       document.getElementById("errorMessage").style.visibility = "hidden";
     }
 
+    //Esconder los datos al no encontrar un pokemon
     document.getElementById("pokemonImage").setAttribute("src", "");
     document.getElementById("pokemonNameDetail").textContent = "";
     document.getElementById("pokemonHeight").textContent = "";
