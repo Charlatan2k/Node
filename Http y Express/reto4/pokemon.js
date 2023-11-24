@@ -15,7 +15,7 @@ async function getPokemon(nombre) {
 
     // Ajustar cada uno de los datos a su respectivo elemento
 
-    // Convertir primera letra del nombre a mayus
+    // Convertir primera letra del nombre a mayúsculas
     let name = response.name;
     name = name.charAt(0).toUpperCase() + name.slice(1);
 
@@ -29,7 +29,7 @@ async function getPokemon(nombre) {
     document.getElementById("pokemonWeight").textContent =
       response.weight + "kg";
 
-    // Haciendo un join de los nombres de las abilidades ya que es un array
+    // Haciendo un join de los nombres de las habilidades ya que es un array
     const abilities = response.abilities
       .map((ability) => ability.ability.name)
       .join(", ");
@@ -42,12 +42,12 @@ async function getPokemon(nombre) {
     document.getElementById("errorMessage").style.visibility = "hidden";
   } catch (error) {
     if (error) {
-      // Mostral el mensaje de error
+      // Mostrar el mensaje de error
       document.getElementById("errorMessage").textContent = "No encontrado";
       document.getElementById("errorMessage").style.display = "flex";
       document.getElementById("errorMessage").style.visibility = "visible";
     } else {
-      // Hacer no visible cuando se vuelva a encontrar un pokemon correctament
+      // Hacer no visible cuando se vuelva a encontrar un pokemon correctamente
       document.getElementById("errorMessage").textContent = "";
       document.getElementById("errorMessage").style.display = "none";
       document.getElementById("errorMessage").style.visibility = "hidden";
